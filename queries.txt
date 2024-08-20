@@ -1,0 +1,16 @@
+-- Query to set up the table
+CREATE TABLE settlements (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    company_name VARCHAR(255) NOT NULL,
+    ticker_symbol VARCHAR(10),
+    deadline DATETIME,
+    class_period VARCHAR(255),
+    settlement_fund VARCHAR(50),
+    settlement_hearing_date VARCHAR(255),
+    post_url VARCHAR(255)
+);
+
+-- Query to show list of cases that are within the deadline, ordered by the deadline and settlement fund
+SELECT * FROM settlements
+WHERE deadline > NOW()
+ORDER BY deadline ASC, settlement_fund DESC;
